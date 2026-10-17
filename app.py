@@ -5,10 +5,13 @@ from sklearn.preprocessing import StandardScaler,LabelEncoder,OneHotEncoder
 import pandas as pd
 import pickle
 #loading trained model
-model = tf.keras.models.load_model(
-    'churn_model.keras',
-    compile=False
-)
+
+print("TensorFlow:", tf.__version__)
+print("Keras:", keras.__version__)
+
+model = tf.keras.models.load_model("model.h5", compile=False)
+
+model.save("churn_model.keras")
 #load encoders and scalers
 with open ('onehotencoder_geo.pkl','rb') as file:
     onehotencoder_geo=pickle.load(file)
